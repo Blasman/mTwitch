@@ -4,7 +4,7 @@ alias mTwitch.has.DisplayName {
 
 on *:CONNECT:{
   if ($mTwitch.isServer) {
-    JSONOpen -u mTwitch_NameFix https://api.twitch.tv/kraken/users/ $+ $mTwitch.UrlEncode($me)
+    JSONOpen -u mTwitch_NameFix https://api.twitch.tv/kraken/users/ $+ $mTwitch.UrlEncode($me) $+ ?client_id=avm4vi7zv0xpjkpi3d4x0qzk8xbrdw8
     if (!$JSONError) {
       var %dnick = $remove($JSON(mTwitch_NameFix, display_name), $chr(32), $cr, $lf)
       if (%dnick !=== $me) {
